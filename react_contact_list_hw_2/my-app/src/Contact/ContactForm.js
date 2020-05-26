@@ -4,7 +4,7 @@ import { Button, FormControl, FormLabel, Input } from '@material-ui/core'
 export default class ContactForm extends Component {
     render() {
         return (
-            <div hidden="true">
+            <div hidden={true}>
                 <FormControl>
                     <FormLabel>Contact Form</FormLabel>
                     <Input
