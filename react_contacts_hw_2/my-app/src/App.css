@@ -1,0 +1,28 @@
+.formContainer {
+    max-width: 500px;
+    max-height: 600px; 
+    background-color: #f0fbff;
+    border-radius: 10px;
+    position: absolute;
+    top: 25%;
+    left: 35%;
+}
+
+form {
+    margin: 20px;
+    font-size: 24px;
+}
+
+thead {
+    background-color: #ebfaff;
+}
+
+button {
+    margin: 20px;
+    float: right;
+}
+
+input {
+    margin-top: 20px;
+}
+
