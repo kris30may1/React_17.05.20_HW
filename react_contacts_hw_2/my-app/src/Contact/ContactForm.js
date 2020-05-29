@@ -143,7 +143,7 @@ export default class ContactForm extends Component {
                         />
                         {this.state.phoneError ? <span className="errorMsg">Phone Number is required</span> : ''}                     
 
-                    <button className="button-primary btn-block" disabled={this.state.isDisabled}>Save</button>  
+                    <button className="button-primary" disabled={this.state.isDisabled}>Save</button>  
                 </form>       
             </div>
         )
