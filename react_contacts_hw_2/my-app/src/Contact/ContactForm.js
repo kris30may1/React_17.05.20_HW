@@ -78,7 +78,8 @@ export default class ContactForm extends Component {
         this.setState({
             contactName: '',
             contactSurname: '',
-            contactPhone: ''
+            contactPhone: '',
+            isDisabled: true
         })
     }
 
