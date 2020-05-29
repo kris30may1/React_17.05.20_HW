@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import logo from '../common/close-icon.svg';
 
 export default class ContactForm extends Component {
-    
+
     state = {
         contactName: '',
         contactSurname: '',
@@ -42,16 +43,18 @@ export default class ContactForm extends Component {
         });
     };
 
-    hideModal = () => {
-        this.props.show = false;
+    onCloseIconClick = () => {
+        this.props.onClick(this.props.show);
     }
     
     render() {
         if(!this.props.show) {
             return null;
+
         }
         return (
             <div className="formContainer">
+                <img onClick={this.onCloseIconClick} src={logo} className="closeIcon" alt="close" />
                 <form onSubmit={this.onFormSubmit} >
                     <label>Contact Form</label>
                     <input 
@@ -61,7 +64,10 @@ export default class ContactForm extends Component {
                         value={this.state.contactName}
                         placeholder="First Name"
                         autoComplete="off"
-                        onChange={this.onNameInputChange}/>
+                        onChange={this.onNameInputChange}
+                        required={true}
+                        />
+                 
                     <input
                         className="u-full-width" 
                         type="text"
@@ -69,7 +75,10 @@ export default class ContactForm extends Component {
                         value={this.state.contactSurname} 
                         placeholder="Last Name"
                         autoComplete="off"
-                        onChange={this.onSurnameInputChange}/>
+                        onChange={this.onSurnameInputChange}
+                        required={true}
+                        />
+                        
                     <input
                         className="u-full-width" 
                         type="text"
@@ -77,10 +86,11 @@ export default class ContactForm extends Component {
                         value={this.state.contactPhone}
                         placeholder="Phone Number"
                         autoComplete="off"
-                        onChange={this.onPhoneInputChange}/>
+                        onChange={this.onPhoneInputChange}
+                        required={true}
+                        />
 
-                    <button className="button-primary">Save</button>
-                    <button onClose={this.hideModal}>Cancel</button>  
+                    <button className="button-primary">Save</button>  
                 </form>       
             </div>
         )

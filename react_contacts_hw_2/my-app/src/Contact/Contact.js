@@ -18,11 +18,19 @@ export default class Contact extends Component {
         this.setState({
             contacts: [...this.state.contacts, newContact]
         });
+
+        this.hideModal();
     }
 
     showModal = () => {
         this.setState({
             show: true
+        });
+    }
+
+    hideModal = () => {
+        this.setState({
+            show: false
         });
     }
 
@@ -33,7 +41,11 @@ export default class Contact extends Component {
             <ContactTable 
                 contacts = {this.state.contacts}
                 />
-            <ContactForm onSubmit={this.addNewContact} show={this.state.show}/>
+            <ContactForm 
+                onSubmit={this.addNewContact}  
+                show={this.state.show} 
+                onClick={this.hideModal}
+                />
             <button onClick ={this.showModal} className="button-primary">Add New Contact</button>
             </>
         )
