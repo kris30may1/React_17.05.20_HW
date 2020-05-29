@@ -83,18 +83,6 @@ export default class ContactForm extends Component {
         })
     }
 
-    onSurnameInputChange = (e) => {
-        this.setState({
-            contactSurname: e.target.value
-        });
-    };
-
-    onPhoneInputChange = (e) => {
-        this.setState({
-            contactPhone: e.target.value
-        });
-    };
-
     onCloseIconClick = () => {
         this.props.onClick(this.props.show);
     }
