@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class ContactListItem extends Component {
     
     onContactClick = () => {
-        this.props.onSelect(this.props.contact.id);
+        this.props.onSelect(this.props.contact);
     }
 
     render() {

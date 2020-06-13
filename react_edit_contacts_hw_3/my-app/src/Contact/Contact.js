@@ -32,8 +32,7 @@ export default class Contact extends Component {
         )
     }
 
-    setDataToForm = (id) => {
-        const contact = this.state.contacts.find(contact => contact.id === id);
+    setDataToForm = (contact) => {
         console.log(contact)
     }
     
@@ -42,13 +41,15 @@ export default class Contact extends Component {
             <>
             <div className="split left">
                 <div className="list-container centered">
-                    <ContactList contacts = {this.state.contacts}/>
+                    <ContactList 
+                    contacts = {this.state.contacts}
+                    onSelect={this.setDataToForm}
+                    />
                 </div>
             <div className="split right">
                 <div className="form-container centered">
                     <ContactListForm 
                     onSubmit={this.addNewContact} 
-                    onSelect={this.setDataToForm}
                     />
                 </div>
             </div>
