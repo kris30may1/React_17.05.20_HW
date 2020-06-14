@@ -7,7 +7,7 @@ const CONTACT_URL = 'https://jsonplaceholder.typicode.com/users'
 export default class Contact extends Component {
 
     state = {
-        currectContact: this.setInitialContactState(),
+        currentContact: this.setInitialContactState(),
         contacts: []
     }
 
@@ -50,7 +50,7 @@ export default class Contact extends Component {
 
     onContactSelect = (contact) => {
         this.setState({
-            currectContact: contact
+            currentContact: contact
         })
     }
 
@@ -64,10 +64,10 @@ export default class Contact extends Component {
         })
         .then(
             this.setState({
-                contacts: this.state.contacts.map(contact =>
-                    contact.id === contact.id ? contact : contact
+                contacts: this.state.contacts.map(item =>
+                    item.id === contact.id ? contact : item
                 ),
-                currectContact: contact
+                currentContact: contact
             })
         )
     }
@@ -78,8 +78,8 @@ export default class Contact extends Component {
         })
         .then(
             this.setState({
-                contacts: this.state.contacts.filter(contact => contact !== contact),
-                currectContact: this.setInitialContactState()
+                contacts: this.state.contacts.filter(item => item !== contact),
+                currentContact: this.setInitialContactState()
             })
         )
     }
@@ -98,8 +98,8 @@ export default class Contact extends Component {
             <div className="split right">
                 <div className="form-container centered">
                     <ContactListForm
-                    key={this.state.currectContact.id}
-                    contact={this.state.currectContact}
+                    key={this.state.currentContact.id}
+                    contact={this.state.currentContact}
                     onSubmit={this.onFormSubmit}
                     onDelete={this.onDeleteContact}
                     />
