@@ -32,3 +32,7 @@
 .contactListItem:hover {
   background-color: #bcecf7;
 }
+
+.button-primary {
+  margin: 20px;
+}
