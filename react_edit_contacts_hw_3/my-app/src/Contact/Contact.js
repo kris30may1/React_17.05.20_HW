@@ -67,7 +67,7 @@ export default class Contact extends Component {
                 contacts: this.state.contacts.map(item =>
                     item.id === contact.id ? contact : item
                 ),
-                currentContact: contact
+                currentContact: this.setInitialContactState()
             })
         )
     }
