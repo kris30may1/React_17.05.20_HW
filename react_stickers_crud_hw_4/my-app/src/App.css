@@ -1,0 +1,36 @@
+.sticker-item {
+height: 100px;
+width: 200px;
+background-color: cadetblue;
+}
+
+.header {
+    height: 70px;
+    background-color: #a8fffc;
+    border-radius: 10px;
+}
+
+.add-btn {
+    float: right;
+}
+
+h1 {
+    text-align: center;
+}
+
+.close-icon {
+    cursor: pointer;
+    float: right;
+}
+
+.move-icon {
+    cursor: pointer;
+    float: left;
+}
+
+textarea {
+    border: 1px solid #34d2eb;
+    border-radius: 10px;
+    background-color: #f2ffff;
+    margin-top: 10px;
+}
