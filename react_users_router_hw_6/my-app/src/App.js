@@ -20,12 +20,12 @@ function App({ modalVisible, openModal }) {
 
 function mapStateToProps(state) {
   return {
-    modalVisible: !!state.users.formItem,
+    modalVisible: !!state.formItem,
   };
 }
 
 const mapDispatchToProps = {
-  openModal,
+  openModal: openModal,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps) (App);

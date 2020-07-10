@@ -1,8 +1,8 @@
-import { ACTION_OPEN_MODAL, ACTION_CLOSE_MODAL, ACTION_SET_USERS, ACTION_CHANGE_FORM_ITEMS } from "../actions";
+import { ACTION_OPEN_MODAL, ACTION_CLOSE_MODAL, ACTION_SET_USERS, ACTION_CHANGE_FORM_ITEMS, ACTION_CREATE_USER, ACTION_UPDATE_USER, ACTION_DELETE } from "../actions";
 
 const initialState = {
     users: [],
-    formItem: null
+    formItem: null,
 };
 
 function getEmptyUser() {
@@ -11,6 +11,14 @@ function getEmptyUser() {
         surname: '',
         phone: '',
     };
+}
+
+function updateUser(users, user) {
+  return users.map((item) => (item.id == user.id ? user : item));
+}
+
+function createUser(users, user) {
+  return [...users, user];
 }
 
 export default function (state = initialState, { type, payload }) {
@@ -35,8 +43,27 @@ export default function (state = initialState, { type, payload }) {
       case ACTION_CLOSE_MODAL:
         return {
           ...state,
-          formItem: '',
+          formItem: null,
         };
+
+      case ACTION_CREATE_USER:
+        return {
+          ...state,
+          users: createUser(state.users, payload),
+        };
+
+      case ACTION_UPDATE_USER:
+        return {
+          ...state,
+          todos: updateUser(state.users, payload),
+        };
+
+      case ACTION_DELETE:
+        return {
+          ...state,
+          users: state.users.filter((item) => item.id !== payload),
+        };
+
       default:
         return state;
     }

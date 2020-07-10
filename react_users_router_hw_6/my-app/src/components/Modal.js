@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import closeIcon from '../common/close-icon.svg';
-import { closeModal, changeFormItems } from '../store/actions';
+import { closeModal, changeFormItems, saveFormItem } from '../store/actions';
 
-function Modal({ user, onClose, onChange }) {
+function Modal({ user, onClose, onChange, onSave }) {
 
     function handleChange(e) {
       const value = e.target.value;
@@ -22,12 +22,12 @@ function Modal({ user, onClose, onChange }) {
           alt='close'
           onClick={() => onClose()}
         />
-        <form>
+        <form onSubmit={() => onSave(user)}>
           <label>User`s Form</label>
           <input
             className='u-full-width'
             type='text'
-            name='Name'
+            name='name'
             value={user.name}
             placeholder='First Name *'
             autoComplete='off'
@@ -37,7 +37,7 @@ function Modal({ user, onClose, onChange }) {
           <input
             className='u-full-width'
             type='text'
-            name='Surname'
+            name='surname'
             value={user.surname}
             placeholder='Last Name *'
             autoComplete='off'
@@ -47,7 +47,7 @@ function Modal({ user, onClose, onChange }) {
           <input
             className='u-full-width'
             type='text'
-            name='Phone'
+            name='phone'
             value={user.phone}
             placeholder='Phone Number *'
             autoComplete='off'
@@ -62,13 +62,14 @@ function Modal({ user, onClose, onChange }) {
 
 function mapStateToProps(state) {
   return {
-    user: state.users.formItem,
+    user: state.formItem,
   };
 }
 
 const mapDispatchToProps = {
-    onClose: closeModal,
-    onChange: changeFormItems
+  onClose: closeModal,
+  onChange: changeFormItems,
+  onSave: saveFormItem,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);
