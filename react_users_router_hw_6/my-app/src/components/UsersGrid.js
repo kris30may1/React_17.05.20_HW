@@ -1,9 +1,9 @@
 import React from 'react'
 import User from './User';
 import { connect } from 'react-redux';
-import { deleteUser } from '../store/actions';
+import { deleteUser, ACTION_UPDATE_USER, openModal } from '../store/actions';
 
-function UsersGrid({ users, onUserDelete }) {
+function UsersGrid({ users, onUserDelete, onUserEdit }) {
   return (
     <table className='u-full-width'>
       <thead>
@@ -20,6 +20,7 @@ function UsersGrid({ users, onUserDelete }) {
             key={user.id}
             user={user}
             onUserDelete={onUserDelete}
+            onUserEdit={onUserEdit}
           />
         ))}
       </tbody>
@@ -35,6 +36,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   onUserDelete: deleteUser,
+  onUserEdit: openModal,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersGrid);

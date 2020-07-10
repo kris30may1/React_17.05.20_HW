@@ -55,7 +55,7 @@ export default function (state = initialState, { type, payload }) {
       case ACTION_UPDATE_USER:
         return {
           ...state,
-          todos: updateUser(state.users, payload),
+          users: updateUser(state.users, payload),
         };
 
       case ACTION_DELETE:
