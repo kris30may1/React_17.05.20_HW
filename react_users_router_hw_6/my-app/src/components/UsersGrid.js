@@ -1,7 +1,7 @@
 import React from 'react'
 import User from './User';
 import { connect } from 'react-redux';
-import { deleteUser, ACTION_UPDATE_USER, openModal } from '../store/actions';
+import { deleteUser, openModal } from '../store/actions';
 
 function UsersGrid({ users, onUserDelete, onUserEdit }) {
   return (

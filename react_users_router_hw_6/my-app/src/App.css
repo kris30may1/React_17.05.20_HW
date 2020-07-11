@@ -36,6 +36,15 @@ h1 {
     display: inline-block;
 }
 
+.error {
+    background-color: red;
+}
+
+li {
+    display: inline-block;
+    margin-left: 50px;
+}
+
 input {
     margin-top: 20px;
 }

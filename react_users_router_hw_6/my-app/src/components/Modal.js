@@ -1,17 +1,34 @@
 import React from 'react'
+import { useState } from 'react'
 import { connect } from 'react-redux';
 import closeIcon from '../common/close-icon.svg';
 import { closeModal, changeFormItems, saveFormItem } from '../store/actions';
 
-function Modal({ user, onClose, onChange, onSave }) {
+function Modal({ user, onClose, onChange, onSave}) {
+ 
+    let [isValid, setIsValid] = useState({
+        name: true,
+        surname: true,
+        phone: true,
+    });
 
     function handleChange(e) {
-      const value = e.target.value;
-      const name = e.target.name;
-      const changes = {
-        [name]: value,
-      };
-      onChange(changes);
+    
+        const value = e.target.value;
+        const name = e.target.name;        
+        const changes = {
+            [name]: value,
+        };
+        onChange(changes); 
+        
+        validateInput(name, value);
+    }
+
+    function validateInput(name, value) {
+        setIsValid({
+            ...isValid,
+            [name]: !!value
+        });
     }
 
     return (
@@ -25,7 +42,7 @@ function Modal({ user, onClose, onChange, onSave }) {
         <form onSubmit={() => onSave(user)}>
           <label>User`s Form</label>
           <input
-            className='u-full-width'
+            className={isValid.name ? '' : 'error'}
             type='text'
             name='name'
             value={user.name}
@@ -35,7 +52,7 @@ function Modal({ user, onClose, onChange, onSave }) {
           />
 
           <input
-            className='u-full-width'
+            className={isValid.surname ? '' : 'error'}
             type='text'
             name='surname'
             value={user.surname}
@@ -45,7 +62,7 @@ function Modal({ user, onClose, onChange, onSave }) {
           />
 
           <input
-            className='u-full-width'
+            className={isValid.phone ? '' : 'error'}
             type='text'
             name='phone'
             value={user.phone}
@@ -53,8 +70,9 @@ function Modal({ user, onClose, onChange, onSave }) {
             autoComplete='off'
             onChange={handleChange}
           />
-
-          <button className='button-primary'>Save</button>
+          <button className='button-primary'>
+            Save
+          </button>
         </form>
       </div>
     );
@@ -62,7 +80,7 @@ function Modal({ user, onClose, onChange, onSave }) {
 
 function mapStateToProps(state) {
   return {
-    user: state.formItem,
+      user: state.formItem,
   };
 }
 
