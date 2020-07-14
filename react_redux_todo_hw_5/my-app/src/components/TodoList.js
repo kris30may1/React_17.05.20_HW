@@ -3,14 +3,15 @@ import TodoItem from './TodoItem';
 import { deleteTodo, toggleTodo } from '../store/actions';
 import { connect } from 'react-redux';
 
-function TodoList({ items, deleteTodo, toggleTodo }) {
+function TodoList({ todos, deleteTodo, toggleTodo }) {
     return (
       <ul>
-        {items.map((item) => (
+        {todos.map((todo) => (
           <TodoItem
           deleteTodo={deleteTodo}
           toggleTodo={toggleTodo}
-          key={item.id} item={item} />
+          key={todo.id} todo={todo}
+          />
         ))}
       </ul>
     );
@@ -18,7 +19,7 @@ function TodoList({ items, deleteTodo, toggleTodo }) {
 
 function mapStateToProps(state) {
   return {
-      items: state.todos
+      todos: state.todos
   };
 }
 

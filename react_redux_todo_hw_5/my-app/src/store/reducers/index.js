@@ -35,8 +35,10 @@ function createTodo(todos, todo) {
 export default function (state = initialState, { type, payload }) {
     switch (type) {
         case ACTION_SAVE_TODO:
+            console.log(payload)
             return {
               todos: createTodo(state.todos, payload),
+              formItem: setNewTodo(),
             };
         case ACTION_TITLE_CHANGE:
             return {

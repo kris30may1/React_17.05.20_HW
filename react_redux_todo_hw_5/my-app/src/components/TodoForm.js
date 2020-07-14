@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { saveTodo, titleChange } from '../store/actions';
 
-function TodoForm({ item, onSave, onChange }) {
+function TodoForm({ todo, onSave, onChange }) {
   function handleChanges(e) {
     const changes = {
         title: e.target.value
@@ -15,11 +15,12 @@ function TodoForm({ item, onSave, onChange }) {
       <label>New Task: </label>
           <input
               type='text'
-              value={item.title}
+              value={todo.title}
               onChange={handleChanges}
+              placeholder='Create new todo...'
           />
       <button
-        onClick={() => onSave(item)}
+        onClick={e => e.preventDefault() || onSave(todo)}
       >
         Add New Task
       </button>
@@ -29,7 +30,7 @@ function TodoForm({ item, onSave, onChange }) {
 
 function mapStateToProps(state) {
   return {
-    item: state.formItem,
+    todo: state.formItem,
   };
 }
 
