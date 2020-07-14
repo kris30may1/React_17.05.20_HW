@@ -12,7 +12,7 @@ function TodoForm({ item, onSave, onChange }) {
 
   return (
     <form action=''>
-      <label>New Task</label>
+      <label>New Task: </label>
           <input
               type='text'
               value={item.title}
