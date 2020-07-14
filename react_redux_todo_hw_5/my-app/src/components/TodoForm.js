@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import { saveTodo, titleChange } from '../store/actions';
 
 function TodoForm({ item, onSave, onChange }) {
-
   function handleChanges(e) {
     const changes = {
         title: e.target.value
     };
-    console.log(changes)
     onChange(changes);
 }
 

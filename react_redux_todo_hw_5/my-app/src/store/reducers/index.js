@@ -1,4 +1,4 @@
-import { ACTION_SAVE_TODO, ACTION_TITLE_CHANGE, ACTION_DELETE_TODO } from "../actions";
+import { ACTION_SAVE_TODO, ACTION_TITLE_CHANGE, ACTION_DELETE_TODO, ACTION_TOGGLE_TODO } from "../actions";
 
 const initialState = {
   todos: [
@@ -47,6 +47,14 @@ export default function (state = initialState, { type, payload }) {
                 ...state,
                 todos: state.todos.filter(item => item.id !== payload)
               };
+        case ACTION_TOGGLE_TODO:
+            return {
+                ...state,
+                todos: state.todos.map(item =>
+                       item.id !== payload
+                          ? item : { ...item, isDone: !item.isDone }
+                    )
+                };
         default: return state;
     }
 }
