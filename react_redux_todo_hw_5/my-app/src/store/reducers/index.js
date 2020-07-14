@@ -1,4 +1,4 @@
-import { ADD_NEW_TODO, TITLE_CHANGE } from "../actions";
+import { ACTION_SAVE_TODO, ACTION_TITLE_CHANGE, ACTION_DELETE_TODO } from "../actions";
 
 const initialState = {
   todos: [
@@ -18,21 +18,35 @@ const initialState = {
       isDone: false
     },
   ],
-  title: '',
+  formItem: setNewTodo(),
 };
+
+function setNewTodo () {
+  return {
+    title: '', isDone: false
+  }
+}
+
+function createTodo(todos, todo) {
+  todo.id = Date.now();
+  return [...todos, todo];
+}
 
 export default function (state = initialState, { type, payload }) {
     switch (type) {
-        case ADD_NEW_TODO:
-            console.log(payload)
+        case ACTION_SAVE_TODO:
             return {
-                ...state, todos: [state.todos, payload]
+              todos: createTodo(state.todos, payload),
             };
-        case TITLE_CHANGE:
-            console.log(payload)
+        case ACTION_TITLE_CHANGE:
             return {
-                ...state, title: { ...state.title, payload }
+                ...state, formItem: { ...state.title, ...payload }
             }
+        case ACTION_DELETE_TODO:
+            return {
+                ...state,
+                todos: state.todos.filter(item => item.id !== payload)
+              };
         default: return state;
     }
 }

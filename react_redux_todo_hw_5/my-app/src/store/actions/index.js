@@ -1,16 +1,24 @@
-export const ADD_NEW_TODO = 'ACTION/ADD';
-export const TITLE_CHANGE = 'ACTION/CHANGE';
+export const ACTION_SAVE_TODO = 'ACTION/ADD';
+export const ACTION_TITLE_CHANGE = 'ACTION/CHANGE';
+export const ACTION_DELETE_TODO = 'ACTION/DELETE';
 
-export function addNewTodo (title) { 
+export function saveTodo (title) { 
     return {
-        type: ADD_NEW_TODO,
+        type: ACTION_SAVE_TODO,
         payload: title
     }
 }
 
-export function onTitleChange(title) {
+export function titleChange(title) {
     return {
-      type: TITLE_CHANGE,
+      type: ACTION_TITLE_CHANGE,
       payload: title,
+    };
+}
+
+export function deleteTodo(id) {
+    return {
+        type: ACTION_DELETE_TODO,
+        payload: id
     };
 }

@@ -1,17 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addNewTodo, onTitleChange } from '../store/actions';
+import { saveTodo, titleChange } from '../store/actions';
 
-function TodoForm({ item, addNewTodo, onTitleChange }) {
+function TodoForm({ item, onSave, onChange }) {
 
-    function setNewTodo() { 
-        console.log(item)
-        return {
-            id: Date.now(),
-            title: item,
-            isDone: false
-        }
-    }
+  function handleChanges(e) {
+    const changes = {
+        title: e.target.value
+    };
+    console.log(changes)
+    onChange(changes);
+}
 
   return (
     <form action=''>
@@ -19,10 +18,10 @@ function TodoForm({ item, addNewTodo, onTitleChange }) {
           <input
               type='text'
               value={item.title}
-              onChange={(e) => onTitleChange(e.target.value)}
+              onChange={handleChanges}
           />
       <button
-        onClick={() => addNewTodo(setNewTodo(item))}
+        onClick={() => onSave(item)}
       >
         Add New Task
       </button>
@@ -32,13 +31,13 @@ function TodoForm({ item, addNewTodo, onTitleChange }) {
 
 function mapStateToProps(state) {
   return {
-    item: state.title,
+    item: state.formItem,
   };
 }
 
 const mapDispatchToProps = {
-  addNewTodo,
-  onTitleChange,
+  onSave: saveTodo,
+  onChange: titleChange,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
