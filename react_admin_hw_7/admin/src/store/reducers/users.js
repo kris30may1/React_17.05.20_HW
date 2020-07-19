@@ -11,14 +11,6 @@ const initialState = {
   formItem: null,
 };
 
-function getEmptyUser() {
-  return {
-    name: '',
-    surname: '',
-    phone: '',
-  };
-}
-
 function updateUser(users, user) {
   return users.map((item) => (item.id == user.id ? user : item));
 }

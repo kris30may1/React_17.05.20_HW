@@ -1,9 +1,9 @@
 import React from 'react'
 
-function PhotosItem() {
+function PhotosItem({ item }) {
     return (
         <div>
-            
+            {item.id}
         </div>
     )
 }
