@@ -9,3 +9,11 @@ tr {
 tr:hover {
   background-color:#cfbaf7;
 }
+
+li {
+  cursor: pointer;
+}
+
+li:hover {
+  background-color:#cfbaf7;
+}

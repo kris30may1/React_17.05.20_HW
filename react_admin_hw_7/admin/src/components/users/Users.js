@@ -3,15 +3,8 @@ import { Paper } from '@material-ui/core';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import UsersList from './UsersList';
 import UsersModal from './UsersModal';
-import { fetchUsers } from '../../store/actions/users';
-import { useEffect } from 'react';
-import { connect } from 'react-redux';
 
-function Users({ fetchUsers }) {
-
-    useEffect(() => {
-      fetchUsers();
-    }, [fetchUsers]);
+function Users() {
 
     const { path } = useRouteMatch();
 
@@ -32,8 +25,4 @@ function Users({ fetchUsers }) {
   );
 }
 
-const mapDispatchToprops = {
-  fetchUsers,
-};
-
-export default connect(null, mapDispatchToprops)(Users);
+export default Users;
