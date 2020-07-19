@@ -4,10 +4,6 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './store';
-import { fetchUsers } from './store/actions/users';
-
-
-store.dispatch(fetchUsers());
 
 ReactDOM.render(
   <React.StrictMode>

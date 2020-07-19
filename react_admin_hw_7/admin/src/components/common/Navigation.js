@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 function Navigation() {
   return (
     <>
-      <header>
         <AppBar position='static'>
           <h1>My App</h1>
           <Tabs>
@@ -15,7 +14,6 @@ function Navigation() {
             <Tab label='Albums' component={Link} to='/albums'></Tab>
           </Tabs>
         </AppBar>
-      </header>
     </>
   );
 }

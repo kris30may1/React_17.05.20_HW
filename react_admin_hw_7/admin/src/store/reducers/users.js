@@ -1,6 +1,4 @@
 import {
-  ACTION_OPEN_MODAL,
-  ACTION_CLOSE_MODAL,
   ACTION_SET_USERS,
   ACTION_CHANGE_FORM_ITEMS,
   ACTION_CREATE_USER,
@@ -38,20 +36,6 @@ export default function (state = initialState, { type, payload }) {
       return {
         ...state,
         formItem: { ...state.formItem, ...payload },
-      };
-
-    case ACTION_OPEN_MODAL:
-      return {
-        ...state,
-        formItem: payload
-          ? state.users.find((user) => user.id == payload)
-          : getEmptyUser(),
-      };
-
-    case ACTION_CLOSE_MODAL:
-      return {
-        ...state,
-        formItem: null,
       };
 
     case ACTION_CREATE_USER:

@@ -1,36 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteUser, openModal } from '../../store/actions/users';
+import { deleteUser } from '../../store/actions/users';
 import UsersListItem from './UsersListItem';
 import Button from '@material-ui/core/Button';
+import TableContainer from '@material-ui/core/TableContainer';
+import { TableHead, TableRow, TableCell, TableBody, Table } from '@material-ui/core';
 
 function UsersList({ items, onUserDelete, onUserEdit }) {
     
   return (
-    <div>
-      <table className='u-full-width'>
-        <thead>
-          <tr>
-            <th>Full Name</th>
-            <th>Phone Number</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
+    <TableContainer>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Full Name</TableCell>
+            <TableCell>Phone Number</TableCell>
+            <TableCell>Action</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {items.map((item) => (
             <UsersListItem
               key={item.id}
-              user={item}
+              item={item}
               onUserDelete={onUserDelete}
               onUserEdit={onUserEdit}
             />
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
       <Button variant='contained' color='primary'>
-        New User
+        Add New User
       </Button>
-    </div>
+    </TableContainer>
   );
 }
 
@@ -42,7 +44,6 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   onUserDelete: deleteUser,
-  onUserEdit: openModal,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersList);

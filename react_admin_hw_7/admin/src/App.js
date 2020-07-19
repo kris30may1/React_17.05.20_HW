@@ -5,7 +5,8 @@ import Container from '@material-ui/core/Container'
 import Navigation from './components/common/Navigation';
 import Grid from '@material-ui/core/Grid';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import UsersList from './components/users/UsersList';
+import { connect } from 'react-redux';
+import Users from './components/users/Users';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Grid item xs={12}>
             <Switch>
               <Route path='/users'>
-                <UsersList />
+                <Users />
               </Route>
               <Route path='/albums'>
                 <Albums />
@@ -32,4 +33,12 @@ function App() {
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+  };
+}
+
+const mapDispatchToProps = {
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
