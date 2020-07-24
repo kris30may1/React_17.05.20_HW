@@ -7,7 +7,7 @@ function PhotosList({ items }) {
     return (
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          {items.map((item) => (
+          {items.map ((item) => (
             <PhotosItem item={item} key={item.id} />
           ))}
         </Grid>
